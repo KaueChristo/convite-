@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convite Especial 🌟</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-image: url('https://img.freepik.com/fotos-gratis/vista-superior-dos-talheres-de-natal-com-espaco-de-copia_23-2148746072.jpg'); /* Fundo com corações */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: #333;
+        }
+        .container {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            max-width: 400px;
+        }
+        .container h1 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+        .container p {
+            font-size: 1.2rem;
+            margin: 10px 0;
+        }
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            position: relative;
+            height: 100px;
+        }
+        button {
+            padding: 15px 25px;
+            font-size: 1rem;
+            font-weight: bold;
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+        #sim {
+            background-color: #28a745;
+        }
+        #sim:hover {
+            background-color: #218838;
+            transform: scale(1.1);
+        }
+        #nao {
+            background-color: #dc3545;
+            position: absolute;
+        }
+        #nao:hover {
+            transform: translateX(50px);
+        }
+        .message {
+            margin-top: 20px;
+            font-size: 1.2rem;
+            color: #28a745;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Convite Especial 🌟</h1>
+        <p><strong>Data:</strong> Quarta-feira, às 20:00</p>
+        <p><strong>Local:</strong> Secreto</p>
+        <div class="buttons" id="buttonsContainer">
+            <button id="sim">SIM</button>
+            <button id="nao">NÃO</button>
+        </div>
+        <div id="messageContainer" class="message"></div>
+    </div>
+
+    <script>
+        const botaoNao = document.getElementById('nao');
+        const buttonsContainer = document.getElementById('buttonsContainer');
+        const botaoSim = document.getElementById('sim');
+        const messageContainer = document.getElementById('messageContainer');
+
+        botaoNao.addEventListener('mouseover', () => {
+            const containerWidth = buttonsContainer.clientWidth;
+            const containerHeight = buttonsContainer.clientHeight;
+            const buttonWidth = botaoNao.offsetWidth;
+            const buttonHeight = botaoNao.offsetHeight;
+
+            const randomX = Math.random() * (containerWidth - buttonWidth);
+            const randomY = Math.random() * (containerHeight - buttonHeight);
+
+            botaoNao.style.left = `${randomX}px`;
+            botaoNao.style.top = `${randomY}px`;
+        });
+
+        botaoNao.addEventListener('click', () => {
+            // Esconder o botão NÃO
+            botaoNao.style.display = 'none';
+
+            // Criar um novo botão SIM
+            const novoBotaoSim = document.createElement('button');
+            novoBotaoSim.textContent = 'SIM';
+            novoBotaoSim.style.backgroundColor = '#28a745';
+            novoBotaoSim.style.padding = '15px 25px';
+            novoBotaoSim.style.fontSize = '1rem';
+            novoBotaoSim.style.fontWeight = 'bold';
+            novoBotaoSim.style.color = '#fff';
+            novoBotaoSim.style.border = 'none';
+            novoBotaoSim.style.borderRadius = '10px';
+            novoBotaoSim.style.cursor = 'pointer';
+            novoBotaoSim.style.transition = 'transform 0.3s ease, background-color 0.3s ease';
+
+            novoBotaoSim.addEventListener('mouseover', () => {
+                novoBotaoSim.style.backgroundColor = '#218838';
+                novoBotaoSim.style.transform = 'scale(1.1)';
+            });
+
+            novoBotaoSim.addEventListener('mouseout', () => {
+                novoBotaoSim.style.backgroundColor = '#28a745';
+                novoBotaoSim.style.transform = 'scale(1)';
+            });
+
+            // Adicionar o novo botão SIM à lista de botões
+            buttonsContainer.appendChild(novoBotaoSim);
+        });
+
+        botaoSim.addEventListener('click', () => {
+            // Exibir a mensagem de confirmação
+            messageContainer.innerHTML = `
+                Parabéns, você aceitou o convite! 🎉<br>
+                Fico feliz que tenha aceito! Espero que a data e hora sejam perfeitas para você. Caso haja alguma desistência, a multa será no valor de R$ 100.000,00.
+            `;
+        });
+    </script>
+</body>
+</html>
