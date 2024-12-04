@@ -77,7 +77,7 @@
 <body>
     <div class="container">
         <h1>Convite Especial 🌟</h1>
-        <p><strong>Data:</strong> Quarta-feira, às 20:00</p>
+        <p><strong>Data:</strong> Terça-feira, às 20:00</p>
         <p><strong>Local:</strong> Secreto</p>
         <div class="buttons" id="buttonsContainer">
             <button id="sim">SIM</button>
@@ -138,10 +138,13 @@
 
         botaoSim.addEventListener('click', () => {
             // Exibir a mensagem de confirmação
-            messageContainer.innerHTML = `
-                Parabéns, você aceitou o convite! 🎉<br>
-                Fico feliz que tenha aceito! Espero que a data e hora sejam perfeitas para você. Caso haja alguma desistência, a multa será no valor de R$ 100.000,00.
-            `;
+            messageContainer.innerHTML = `Parabéns, você aceitou o convite! 🎉<br>
+                Fico feliz que tenha aceito! Espero que a data e hora sejam perfeitas para você. Caso haja alguma desistência, a multa será no valor de R$ 100.000,00.`;
+
+            // Enviar a mensagem via WhatsApp
+            const numeroWhatsApp = '21997727295';
+            const mensagem = encodeURIComponent('O jantar está marcado para terça-feira, às 20:00. Fico aguardando você!');
+            window.location.href = `https://wa.me/${numeroWhatsApp}?text=${mensagem}`;
         });
     </script>
 </body>
