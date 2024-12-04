@@ -144,7 +144,10 @@
             // Enviar a mensagem via WhatsApp
             const numeroWhatsApp = '5521997727295'; // Código do país (55) + número
             const mensagem = encodeURIComponent('O jantar está marcado para terça-feira, às 20:00. Fico aguardando você!');
-            window.location.href = `https://wa.me/${numeroWhatsApp}?text=${mensagem}`;
+            const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${mensagem}`;
+            
+            // Verificar se a URL do WhatsApp está correta
+            window.open(urlWhatsApp, '_blank');
         });
     </script>
 </body>
